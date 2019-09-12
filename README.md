@@ -26,11 +26,15 @@ The library for retrieving the file list with the folder tree from the specific 
 
 # Install
 
+```html
 <script src="getfilelist_js.min.js"></script>
+```
 
 Or, using jsdelivr cdn
 
-<script src="###"></script>
+```html
+<script src="https://cdn.jsdelivr.net/gh/tanaikech/GetFileList_js@master/getfilelist_js.min.js"></script>
+```
 
 <a name="method"></a>
 
