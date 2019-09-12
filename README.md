@@ -444,6 +444,9 @@ fl.getFileList(resource)
 }
 ```
 
+# Important
+At Google Drive, the files and folders are managed by IDs. For example, one file and one folder can have multiple parent folders. But in this library, the 1st parent folder is retrieved. I thought that at the most cases, one file and folder will have one parent folder. So I used this. If in your environment, one file and folder has multiple parent folder, only 1st parent folder is retrieved. And also, the files and folders which have no parent folders cannot be retrieved. Please be careful this.
+
 ---
 
 <a name="licence"></a>
