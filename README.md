@@ -1,5 +1,6 @@
 # GetFileList_js
 
+[![Build Status](https://travis-ci.org/tanaikech/GetFileList_js.svg?branch=master)](https://travis-ci.org/tanaikech/GetFileList_js)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENCE)
 
 <a name="top"></a>
