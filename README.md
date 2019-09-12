@@ -149,11 +149,9 @@ HTML Service of Google Apps Script](https://developers.google.com/apps-script/re
 #### HTML side: index.html
 
 ```html
-<script src="getfilelist_js.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/tanaikech/GetFileList_js@master/getfilelist_js.min.js"></script>
 
 <input type="button" value="Run script" onClick="run()" />
-
-<?!= include('getfilelist'); ?>
 
 <script>
   function run() {
@@ -190,16 +188,14 @@ function getAuth() {
   return ScriptApp.getOAuthToken();
 }
 
-function include(filename) {
-  return HtmlService.createHtmlOutputFromFile(filename).getContent();
-}
-
 function doGet() {
   return HtmlService.createTemplateFromFile("index").evaluate();
 }
 
 // DriveApp.getFiles(); // This is used for the scope.
 ```
+
+- If you want to include the script of library at Google Apps Script project, you can also load the library using `<?!= include('getfilelist'); ?>`.
 
 ### Note
 
@@ -445,6 +441,7 @@ fl.getFileList(resource)
 ```
 
 # Important
+
 At Google Drive, the files and folders are managed by IDs. For example, one file and one folder can have multiple parent folders. But in this library, the 1st parent folder is retrieved. I thought that at the most cases, one file and folder will have one parent folder. So I used this. If in your environment, one file and folder has multiple parent folder, only 1st parent folder is retrieved. And also, the files and folders which have no parent folders cannot be retrieved. Please be careful this.
 
 ---
