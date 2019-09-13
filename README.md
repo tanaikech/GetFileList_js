@@ -189,7 +189,7 @@ function getAuth() {
 }
 
 function doGet() {
-  return HtmlService.createTemplateFromFile("index").evaluate();
+  return HtmlService.createHtmlOutputFromFile("index");
 }
 
 // DriveApp.getFiles(); // This is used for the scope.
