@@ -3,9 +3,9 @@
  * GetFileList for Javascript library
  * GitHub  https://github.com/tanaikech/GetFileList_js<br>
  */
-(r => {
+(function(r) {
   let GetFileList;
-  GetFileList = (() => {
+  GetFileList = (function() {
     function GetFileList() {
       this.obj = {};
     }
@@ -15,7 +15,7 @@
      * @param {Object} resource the object for retrieving folder tree.
      * @return {Object} Folder tree.
      */
-    GetFileList.prototype.getFolderTree = resource => {
+    GetFileList.prototype.getFolderTree = function(resource) {
       return new Promise((resolve, reject) => {
         this.obj = { resource: resource };
         init.call(this, err => {
@@ -49,7 +49,7 @@
      * @param {Object} resource the object for retrieving file list.
      * @return {Object} File list.
      */
-    GetFileList.prototype.getFileList = resource => {
+    GetFileList.prototype.getFileList = function(resource) {
       return new Promise((resolve, reject) => {
         this.obj = { resource: resource };
         init.call(this, err => {
@@ -92,7 +92,7 @@
       });
     };
 
-    const init = callback => {
+    const init = function(callback) {
       const rootId = this.obj.resource.id.toLowerCase() == "root";
       if (
         "apiKey" in this.obj.resource &&
@@ -147,7 +147,7 @@
         });
     };
 
-    const checkTokens = () => {
+    const checkTokens = function() {
       let apiKey = "";
       let accessToken = "";
       if (
@@ -169,7 +169,7 @@
       return [apiKey, accessToken];
     };
 
-    const getFolderTreeRecursively = callback => {
+    const getFolderTreeRecursively = function(callback) {
       let folderTr = { search: this.obj.searchedFolder.id, temp: [] };
       getAllfoldersRecursively
         .call(this, this.obj.searchedFolder.id, [], folderTr)
@@ -182,7 +182,7 @@
         });
     };
 
-    const getAllfoldersRecursively = async (id, parents, folders) => {
+    const getAllfoldersRecursively = async function(id, parents, folders) {
       // In order to use this library with Google Apps Script, the template literals cannot be used in the script.
       // const q = `'${id}' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false`;
       const q =
@@ -213,7 +213,7 @@
       return folders;
     };
 
-    const getList = (ptoken, q, fields) => {
+    const getList = function(ptoken, q, fields) {
       return new Promise((resolve, reject) => {
         const endpoint = "https://www.googleapis.com/drive/v3/files";
         const [apiKey, accessToken] = checkTokens.call(this);
@@ -257,7 +257,7 @@
       });
     };
 
-    const getFromAllFolders = callback => {
+    const getFromAllFolders = function(callback) {
       const q =
         "mimeType='application/vnd.google-apps.folder' and trashed=false";
       const fields = "files(id,mimeType,name,parents,size),nextPageToken";
@@ -279,7 +279,8 @@
           callback(err, null);
         });
     };
-    const createFolderTreeID = (fm, id, parents, fls) => {
+
+    const createFolderTreeID = function(fm, id, parents, fls) {
       const temp = fm.reduce((ar, e, i) => {
         if ("parents" in e && e.parents.length > 0 && e.parents[0] == id) {
           const t = {
@@ -301,7 +302,7 @@
       return fls;
     };
 
-    const getFilesFromFolder = async folderTree => {
+    const getFilesFromFolder = async function(folderTree) {
       const e = this.obj;
       let f = {
         searchedFolder: e.searchedFolder,
@@ -341,7 +342,7 @@
       return f;
     };
 
-    const getListLoop = async (q, fields, list) => {
+    const getListLoop = async function(q, fields, list) {
       let NextPageToken = "";
       do {
         const res = await getList.call(this, NextPageToken, q, fields);
@@ -351,7 +352,7 @@
       return list;
     };
 
-    const getDlFoldersS = fr => {
+    const getDlFoldersS = function(fr) {
       let fT = { id: [], names: [], folders: [] };
       fT.id.push([fr.search]);
       fT.names.push(this.obj.searchedFolder.name);

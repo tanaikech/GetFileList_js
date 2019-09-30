@@ -468,4 +468,8 @@ If you have any questions and commissions for me, feel free to tell me.
 
   1. Initial release.
 
+- v1.0.1 (September 30, 2019)
+
+  1. A bug related to the scope of variables was removed.
+
 [TOP](#top)
