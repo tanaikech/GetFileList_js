@@ -7,7 +7,7 @@
 
 # Overview
 
-This is a Javascript library to retrieve the file list with the folder tree from the specific folder (publicly shared folders and own folders) of Google Drive.
+This is a Javascript library to retrieve the file list with the folder tree from the specific folder (publicly shared folders and own folders) of own Google Drive and shared Drives.
 
 # Description
 
@@ -443,6 +443,16 @@ fl.getFileList(resource)
 # Important
 
 At Google Drive, the files and folders are managed by IDs. For example, one file and one folder can have multiple parent folders. But in this library, the 1st parent folder is retrieved. I thought that at the most cases, one file and folder will have one parent folder. So I used this. If in your environment, one file and folder has multiple parent folder, only 1st parent folder is retrieved. And also, the files and folders which have no parent folders cannot be retrieved. Please be careful this.
+
+# For other languages
+
+As the libraries "GetFileList" for other languages, there are following libraries.
+
+- Golang: [https://github.com/tanaikech/go-getfilelist](https://github.com/tanaikech/go-getfilelist)
+- Google Apps Script: [https://github.com/tanaikech/FilesApp](https://github.com/tanaikech/FilesApp)
+- Javascript: [https://github.com/tanaikech/GetFileList_js](https://github.com/tanaikech/GetFileList_js)
+- Node.js: [https://github.com/tanaikech/node-getfilelist](https://github.com/tanaikech/node-getfilelist)
+- Python: [https://github.com/tanaikech/getfilelistpy](https://github.com/tanaikech/getfilelistpy)
 
 ---
 
