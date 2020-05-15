@@ -89,15 +89,15 @@ When the API key is used, the values can be retrieved from only the publicly sha
   const resource = {
     apiKey: "###",
     id: folderId,
-    fields: "files(id,name)"
+    fields: "files(id,name)",
   };
   const fl = new GetFileList();
   fl.getFileList(resource)
     // or fl.getFolderTree(resource)
-    .then(res => {
+    .then((res) => {
       console.log(res);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 </script>
@@ -127,15 +127,15 @@ In this sample script, it supposes that the access token is retrieved by [Google
   const resource = {
     accessToken: gapi.auth.getToken().access_token,
     id: folderId,
-    fields: "files(id,name)"
+    fields: "files(id,name)",
   };
   const fl = new GetFileList();
   fl.getFileList(resource)
     // or fl.getFolderTree(resource)
-    .then(res => {
+    .then((res) => {
       console.log(res);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 </script>
@@ -156,7 +156,7 @@ HTML Service of Google Apps Script](https://developers.google.com/apps-script/re
 <script>
   function run() {
     google.script.run
-      .withSuccessHandler(accessToken => runGetFileList(accessToken))
+      .withSuccessHandler((accessToken) => runGetFileList(accessToken))
       .getAuth();
   }
 
@@ -166,15 +166,15 @@ HTML Service of Google Apps Script](https://developers.google.com/apps-script/re
     const resource = {
       accessToken: accessToken,
       id: folderId,
-      fields: "files(id,name)"
+      fields: "files(id,name)",
     };
     const fl = new GetFileList();
     fl.getFileList(resource)
       // or fl.getFolderTree(resource)
-      .then(res => {
+      .then((res) => {
         console.log(res);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
@@ -212,10 +212,10 @@ As a sample, when the values are retrieved from above structure, the results of 
 ```javascript
 const fl = new GetFileList();
 fl.getFolderTree(resource)
-  .then(res => {
+  .then((res) => {
     console.log(res);
   })
-  .catch(err => {
+  .catch((err) => {
     console.log(err);
   });
 ```
@@ -274,10 +274,10 @@ fl.getFolderTree(resource)
 ```javascript
 const fl = new GetFileList();
 fl.getFileList(resource)
-  .then(res => {
+  .then((res) => {
     console.log(res);
   })
-  .catch(err => {
+  .catch((err) => {
     console.log(err);
   });
 ```
@@ -471,5 +471,11 @@ If you have any questions and commissions for me, feel free to tell me.
 - v1.0.1 (September 30, 2019)
 
   1. A bug related to the scope of variables was removed.
+
+- v1.0.2 (May 15, 2020)
+
+  1. Shared drive got to be able to be used. The file list can be retrieved from both your Google Drive and the shared drive.
+
+     - For example, when the folder ID in the shared Drive is used `id` of `resource`, you can retrieve the file list from the folder in the shared Drive.
 
 [TOP](#top)
