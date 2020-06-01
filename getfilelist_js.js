@@ -113,7 +113,7 @@
       const qs = {
         supportsAllDrives: true,
         fields:
-          "createdTime,id,mimeType,modifiedTime,name,owners,parents,shared,webContentLink,webViewLink",
+          "createdTime,id,mimeType,modifiedTime,name,owners,parents,shared,webContentLink,webViewLink,driveId",
       };
       let params = {
         method: "GET",
@@ -227,6 +227,10 @@
           includeItemsFromAllDrives: true,
           supportsAllDrives: true,
         };
+        if (this.obj.searchedFolder.driveId) {
+          qs.driveId = this.obj.searchedFolder.driveId;
+          qs.corpora = "drive";
+        }
         let params = {
           method: "GET",
         };
